@@ -1,5 +1,6 @@
 [![Join the chat at https://gitter.im/VirusTotal/yara](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/VirusTotal/yara?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/VirusTotal/yara.svg)](https://travis-ci.org/VirusTotal/yara)
+[![Travis build status](https://travis-ci.org/VirusTotal/yara.svg)](https://travis-ci.org/VirusTotal/yara)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/7glqg19w4oolm7pr?svg=true)](https://ci.appveyor.com/project/plusvic/yara)
 
 
 ## YARA in a nutshell
@@ -58,11 +59,13 @@ helpful extension to YARA developed and open-sourced by Bayshore Networks.
 * [FSF](https://github.com/EmersonElectricCo/fsf)
 * [Guidance Software](http://www.guidancesoftware.com/endpointsecurity)
 * [Heroku](https://heroku.com)
+* [JASK](http://jask.io)
 * [jsunpack-n](http://jsunpack.jeek.org/)
 * [Kaspersky Lab](http://www.kaspersky.com)
 * [Koodous](https://koodous.com/)
 * [Laika BOSS](https://github.com/lmco/laikaboss)
 * [Lastline, Inc.](http://www.lastline.com)
+* [McAfee Advanced Threat Defense](http://mcafee.com/atd)
 * [Metaflows](http://www.metaflows.com)
 * [NBS System](https://www.nbs-system.com/)
 * [osquery](http://www.osquery.io)
@@ -71,8 +74,10 @@ helpful extension to YARA developed and open-sourced by Bayshore Networks.
 * [Radare2](http://rada.re)
 * [Raytheon Cyber Products, Inc.](http://www.raytheoncyber.com/capabilities/products/sureview-threatprotection/)
 * [ReversingLabs](http://reversinglabs.com)
+* [root9B](https://www.root9b.com)
 * [RSA ECAT](http://www.emc.com/security/rsa-ecat.htm)
 * [SpamStopsHere](https://www.spamstopshere.com)
+* [stoQ](http://stoq.punchcyber.com)
 * [Symantec](http://www.symantec.com)
 * [Tanium](http://www.tanium.com/)
 * [The DigiTrust Group](http://www.digitrustgroup.com/)
@@ -85,5 +90,6 @@ helpful extension to YARA developed and open-sourced by Bayshore Networks.
 * [Websense](http://www.websense.com)
 * [x64dbg](http://x64dbg.com)
 * [YALIH](https://github.com/Masood-M/YALIH)
+* [Scanii](https://scanii.com)
 
 Are you using it? Want to see your site listed here?

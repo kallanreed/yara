@@ -29,8 +29,13 @@ case $host_alias in
 esac
 
 case $host_os in
-    darwin*) CFLAGS="$CFLAGS -I/opt/local/include" ;;
+    darwin*) CFLAGS="$CFLAGS -I/opt/local/include"
+             # Starting with Mac OS X 10.11 (El Capitan) the OpenSSL headers
+             # are in /usr/local/opt/openssl/include
+             CFLAGS="$CFLAGS -I/usr/local/opt/openssl/include" ;;
 esac
+
+AC_C_BIGENDIAN
 
 ACX_PTHREAD(
     [LIBS="$PTHREAD_LIBS $LIBS"

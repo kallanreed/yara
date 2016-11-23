@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013. The YARA Authors. All Rights Reserved.
+Copyright (c) 2016. The YARA Authors. All Rights Reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,66 +27,37 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#ifndef YR_ENDIAN_H
+#define YR_ENDIAN_H
 
-#ifndef THREADING_H
-#define THREADING_H
+#include <config.h>
 
-#if defined(_WIN32) || defined(__CYGWIN__)
-#include <windows.h>
+#if defined(__GNUC__)
+#define yr_bswap16(x) __builtin_bswap16(x)
+#define yr_bswap32(x) __builtin_bswap32(x)
+#define yr_bswap64(x) __builtin_bswap64(x)
+#elif defined(_MSC_VER)
+#define yr_bswap16(x) _byteswap_ushort(x)
+#define yr_bswap32(x) _byteswap_ulong(x)
+#define yr_bswap64(x) _byteswap_uint64(x)
 #else
-#include <sys/stat.h>
-#include <pthread.h>
-#include <semaphore.h>
+#error Unknown compiler: Add yr_bswap* definitions
 #endif
 
-#if defined(_WIN32) || defined(__CYGWIN__)
-
-typedef HANDLE SEMAPHORE;
-typedef CRITICAL_SECTION MUTEX;
-typedef HANDLE THREAD;
-
-typedef LPTHREAD_START_ROUTINE THREAD_START_ROUTINE;
-
+#if defined(WORDS_BIGENDIAN)
+#define yr_le16toh(x) yr_bswap16(x)
+#define yr_le32toh(x) yr_bswap32(x)
+#define yr_le64toh(x) yr_bswap64(x)
+#define yr_be16toh(x) (x)
+#define yr_be32toh(x) (x)
+#define yr_be64toh(x) (x)
 #else
-
-typedef sem_t* SEMAPHORE;
-typedef pthread_mutex_t MUTEX;
-typedef pthread_t THREAD;
-typedef void *(*THREAD_START_ROUTINE) (void *);
-
+#define yr_le16toh(x) (x)
+#define yr_le32toh(x) (x)
+#define yr_le64toh(x) (x)
+#define yr_be16toh(x) yr_bswap16(x)
+#define yr_be32toh(x) yr_bswap32(x)
+#define yr_be64toh(x) yr_bswap64(x)
 #endif
-
-int mutex_init(
-    MUTEX* mutex);
-
-void mutex_destroy(
-    MUTEX* mutex);
-
-void mutex_lock(
-    MUTEX* mutex);
-
-void mutex_unlock(
-    MUTEX* mutex);
-
-int semaphore_init(
-    SEMAPHORE* semaphore,
-    int value);
-
-void semaphore_destroy(
-    SEMAPHORE* semaphore);
-
-void semaphore_wait(
-    SEMAPHORE* semaphore);
-
-void semaphore_release(
-    SEMAPHORE* semaphore);
-
-int create_thread(
-    THREAD* thread,
-    THREAD_START_ROUTINE start_routine,
-    void* param);
-
-void thread_join(
-    THREAD* thread);
 
 #endif

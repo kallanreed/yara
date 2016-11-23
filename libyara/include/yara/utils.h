@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef YR_UTILS_H
 #define YR_UTILS_H
 
+#include <limits.h>
+
 #ifndef TRUE
 #define TRUE 1
 #endif
@@ -68,9 +70,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define yr_min(x, y) ((x < y) ? (x) : (y))
 #define yr_max(x, y) ((x > y) ? (x) : (y))
 
-#define PTR_TO_INT64(x)  ((int64_t) (size_t) x)
-
-
 #ifdef NDEBUG
 
 #define assertf(expr, msg, ...)  ((void)0)
@@ -78,7 +77,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #else
 
 #include <stdlib.h>
-#include <limits.h>
 
 #define assertf(expr, msg, ...) \
     if(!(expr)) { \
